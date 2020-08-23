@@ -9,9 +9,8 @@ return function (App $app) {
 
 	$app->get('/post/{id}', 'App\Controller\HomeController:viewPost')->setName('post');
 
-	$app->group('/member', function (Group $group) {
-		$group->map(['GET', 'POST'],'/login', 'App\Controller\AuthController:login')->setName('login');
-		$group->get('/logout', 'App\Controller\AuthController:logout')->setName('logout');
+	$app->get('/users', 'App\Controller\UserAPIController:index')->setName('seeJson');
+	$app->get('/users1', 'App\Controller\UserAPIController:index')->setName('login');
+	$app->get('/users2', 'App\Controller\UserAPIController:index')->setName('logout');
 
-	});
 };

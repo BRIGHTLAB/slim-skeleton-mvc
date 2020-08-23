@@ -20,6 +20,6 @@ $settings($containerBuilder);
 $container = $containerBuilder->build();
 
 $application = new Application();
-$application->add(new App\Command\InitDB($container));
+// $application->add(new App\Command\InitDB($container));
 
 $application->run();

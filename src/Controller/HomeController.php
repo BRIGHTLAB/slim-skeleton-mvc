@@ -16,13 +16,7 @@ final class HomeController extends BaseController
 	public function viewPost(Request $request, Response $response, array $args = []): Response
 	{
 		$this->logger->info("View post using Doctrine with Slim 4");
-
-		try {
-			$post = $this->em->find('App\Entity\Post', intval($args['id']));
-		} catch (\Exception $e) {
-			throw new \Slim\Exception\HttpInternalServerErrorException($request, $e->getMessage());
-		}
-
+		$post = [];
 		return $this->render($request, $response, 'post.twig', ['post' => $post]);
 	}
 }

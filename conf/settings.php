@@ -32,20 +32,6 @@ return function (ContainerBuilder $containerBuilder) {
 				],
 			],
 
-			// doctrine settings
-			'doctrine' => [
-				'meta' => [
-					'entity_path' => [ $rootPath . '/src/Entity' ],
-					'auto_generate_proxies' => true,
-					'proxy_dir' => $rootPath . '/var/cache/proxies',
-					'cache' => null,
-				],
-				'connection' => [
-					'driver' => 'pdo_sqlite',
-					'path' => $rootPath . '/var/blog.sqlite'
-				]
-			],
-
 			// monolog settings
 			'logger' => [
 				'name' => 'app',
