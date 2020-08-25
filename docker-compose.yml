@@ -6,13 +6,26 @@ volumes:
 
 services:
     slim:
-        image: php:7-alpine
+        image: ulsmith/alpine-apache-php7
         working_dir: /var/www
-        command: php -S 0.0.0.0:8080 -t public
         environment:
             docker: "true"
         ports:
-            - 8080:8080
+            - 8080:80
         volumes:
-            - .:/var/www
+            - ./:/app
             - logs:/var/www/logs
+        environment:
+            - MYSQL_HOST=mysql
+            - APACHE_SERVER_NAME=myservice.docker.localhost
+            - PHP_SHORT_OPEN_TAG=On
+            - PHP_ERROR_REPORTING=E_ALL
+            - PHP_DISPLAY_ERRORS=On
+            - PHP_HTML_ERRORS=On
+            - PHP_XDEBUG_ENABLED=true
+        networks:
+            - default
+        cap_add:
+            - SYS_TIME
+            - SYS_NICE
+        build: ./
