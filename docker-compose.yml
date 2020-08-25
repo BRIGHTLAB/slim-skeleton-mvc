@@ -7,7 +7,7 @@ volumes:
 services:
     slim:
         image: ulsmith/alpine-apache-php7
-        working_dir: /var/www
+        working_dir: /app
         environment:
             docker: "true"
         ports:
@@ -16,8 +16,7 @@ services:
             - ./:/app
             - logs:/var/www/logs
         environment:
-            - MYSQL_HOST=mysql
-            - APACHE_SERVER_NAME=myservice.docker.localhost
+            - APACHE_SERVER_NAME=catalogue.docker.localhost
             - PHP_SHORT_OPEN_TAG=On
             - PHP_ERROR_REPORTING=E_ALL
             - PHP_DISPLAY_ERRORS=On
