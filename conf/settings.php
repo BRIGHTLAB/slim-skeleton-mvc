@@ -12,7 +12,7 @@ return function (ContainerBuilder $containerBuilder) {
 		'settings' => [
 			// Base path
 			'base_path' => '',
-		
+
 			// Is debug mode
 			'debug' => (getenv('APPLICATION_ENV') != 'production'),
 
@@ -26,7 +26,7 @@ return function (ContainerBuilder $containerBuilder) {
 			'view' => [
 				'template_path' =>$rootPath . '/tmpl',
 				'twig' => [
-					'cache' =>$rootPath . '/var/cache/twig',
+					'cache' =>false,//$rootPath . '/var/cache/twig',
 					'debug' => (getenv('APPLICATION_ENV') != 'production'),
 					'auto_reload' => true,
 				],
