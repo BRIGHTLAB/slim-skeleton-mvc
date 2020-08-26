@@ -20,11 +20,11 @@ return function (ContainerBuilder $containerBuilder) {
 			'temporary_path' => $rootPath . '/var/tmp',
 
 			// Route cache
-			'route_cache' =>$rootPath . '/var/routes.cache',
+			'route_cache' => $rootPath . '/var/routes.cache',
 
 			// View settings
 			'view' => [
-				'template_path' =>$rootPath . '/template',
+				'template_path' => $rootPath . '/template',
 				'twig' => [
 					'cache' =>false,//$rootPath . '/var/cache/twig',
 					'debug' => (getenv('APPLICATION_ENV') != 'production'),
