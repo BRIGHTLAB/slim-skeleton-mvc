@@ -22,6 +22,8 @@ services:
             - PHP_DISPLAY_ERRORS=On
             - PHP_HTML_ERRORS=On
             - PHP_XDEBUG_ENABLED=true
+            - DB_HOST=localhost
+
         networks:
             - default
         cap_add:

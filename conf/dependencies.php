@@ -32,6 +32,17 @@ return function (ContainerBuilder $containerBuilder) {
 			$settings = $container->get('settings');
 			return Twig::create($settings['view']['template_path'], $settings['view']['twig']);
 		},
+		'database_adapter' => function (ContainerInterface $container) {
+			$settings = $container->get('settings')['database_source'];
+
+			$dbpass = $settings['dbpass'];
+    	$dbuser = $settings['dbuser'];
+    	$dbhost = $settings['dbhost'];
+    	$dbname = $settings['dbname'];
+    	$charset = $settings['charset'];
+    	$dsn = "mysql:host=$dbhost;dbname=$dbname;charset=$charset";
+
+    	// return new \PDO($dsn, $dbuser, $dbpass);
+		}
 	]);
 };
-

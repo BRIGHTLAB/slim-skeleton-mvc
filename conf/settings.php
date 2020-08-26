@@ -32,6 +32,14 @@ return function (ContainerBuilder $containerBuilder) {
 				],
 			],
 
+			'database_source' => [
+	    	'dbhost' => getenv('DB_HOST'),
+	    	'dbuser' => "",//getenv('DB_USER'),
+	    	'dbpass' => "",//getenv('DB_PASS'),
+	    	'dbname' => "",//getenv('DB_NAME'),
+	    	'charset' => 'utf8',
+      ],
+
 			// monolog settings
 			'logger' => [
 				'name' => 'app',
