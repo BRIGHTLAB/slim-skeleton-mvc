@@ -24,7 +24,7 @@ return function (ContainerBuilder $containerBuilder) {
 
 			// View settings
 			'view' => [
-				'template_path' =>$rootPath . '/tmpl',
+				'template_path' =>$rootPath . '/template',
 				'twig' => [
 					'cache' =>false,//$rootPath . '/var/cache/twig',
 					'debug' => (getenv('APPLICATION_ENV') != 'production'),
