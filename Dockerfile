@@ -5,6 +5,8 @@ WORKDIR /app
 COPY . /app
 EXPOSE 80
 
+RUN composer install
+
 ENV docker=true
 ENV APPLICATION_ENV=true
 ENV PHP_SHORT_OPEN_TAG=On
