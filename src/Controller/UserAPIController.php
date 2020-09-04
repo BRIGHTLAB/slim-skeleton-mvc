@@ -9,7 +9,8 @@ use App\Mappers\UsersMapper;
 
 final class UserAPIController extends BaseController
 {
-	public function index(Request $request, Response $response, array $args = [])
+
+	public function index(Request $request, Response $response, array $args = []): Response
 	{
 		$mapper = new UsersMapper($this->database_adapter);
 		$results = $mapper->fetch();
@@ -22,5 +23,15 @@ final class UserAPIController extends BaseController
 		$payload = json_encode($results, JSON_PRETTY_PRINT);
 		$response->getBody()->write($payload);
     	return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
+	}
+
+	public function env(Request $request, Response $response, array $args = []): Response
+	{
+
+		$data = ['db_host' => getenv('DB_HOST')];
+		$payload = json_encode($data);
+
+		$response->getBody()->write($payload);
+		return $response->withHeader('Content-Type', 'application/json');
 	}
 }

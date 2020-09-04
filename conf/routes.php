@@ -12,5 +12,7 @@ return function (App $app) {
 	$app->get('/users', 'App\Controller\UserAPIController:index')->setName('seeJson');
 	$app->get('/users1', 'App\Controller\UserAPIController:index')->setName('login');
 	$app->get('/users2', 'App\Controller\UserAPIController:index')->setName('logout');
+	$app->get('/env', 'App\Controller\UserAPIController:env')->setName('env');
+	$app->get('/health-check', 'App\Controller\HealthCheckAPIController:index')->setName('health-check');
 
 };

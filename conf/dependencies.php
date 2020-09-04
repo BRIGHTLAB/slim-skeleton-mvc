@@ -32,6 +32,7 @@ return function (ContainerBuilder $containerBuilder) {
 			$settings = $container->get('settings');
 			return Twig::create($settings['view']['template_path'], $settings['view']['twig']);
 		},
+
 		'db' => function(ContainerInterface $container){
 			$settings = $container->get('settings')['database_source'];
 		    $dbpass = $settings['dbpass'];
