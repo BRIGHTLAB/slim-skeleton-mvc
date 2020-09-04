@@ -2,3 +2,5 @@
 vendor/
 var/*
 composer.lock
+.env
+.DS_Store

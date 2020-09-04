@@ -14,6 +14,10 @@ include_once($rootPath . '/vendor/autoload.php');
 // Instantiate PHP-DI ContainerBuilder
 $containerBuilder = new ContainerBuilder();
 
+// loading enviroment variables
+$dotenv = \Dotenv\Dotenv::createImmutable(__DIR__.'/../');
+$dotenv->load();
+
 // Set up settings
 $settings = require $rootPath . '/conf/settings.php';
 $settings($containerBuilder);
@@ -31,6 +35,9 @@ $settings = $container->get('settings');
 $app = AppFactory::createFromContainer($container);
 $app->setBasePath($settings['base_path']);
 
+$routeParser = $app->getRouteCollector()->getRouteParser();
+$container->set(\Slim\Interfaces\RouteParserInterface::class, $routeParser);
+
 // Register middleware
 $middleware = require $rootPath . '/conf/middleware.php';
 $middleware($app);
@@ -38,6 +45,7 @@ $middleware($app);
 // Register routes
 $routes = require $rootPath . '/conf/routes.php';
 $routes($app);
+
 
 // Set the cache file for the routes. Note that you have to delete this file
 // whenever you change the routes.

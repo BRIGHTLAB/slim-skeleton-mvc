@@ -37,7 +37,43 @@ return function (ContainerBuilder $containerBuilder) {
 				'name' => 'app',
 				'path' =>  getenv('docker') ? 'php://stdout' : $rootPath . '/var/log/app.log',
 				'level' => (getenv('APPLICATION_ENV') != 'production') ? Logger::DEBUG : Logger::INFO,
-			]
+			],
+
+			// database
+	        'database_source' => [
+	            'dbhost' => $_ENV['DB_HOST'],
+	            'dbuser' => $_ENV['DB_USER'],
+	            'dbpass' => $_ENV['DB_PASS'],
+	            'dbname' => $_ENV['DB_NAME'],
+	            'charset' => 'utf8',
+	        ],
+
+        	// Renderer settings
+	        'renderer' => [
+	            'template_path' => __DIR__ . '/../templates/',
+	            'cache_path' => __DIR__ . '/../cache/',
+	        ],
+
+	        // email verification
+	        'signup_verification' => [
+	            'html_template' => 'verification.twig',
+	            'smtp_host' => $_ENV['EMAIL_SMTP'],
+	            'email_username' => $_ENV['EMAIL_USER'],
+	            'email_password' => $_ENV['EMAIL_PASS'],
+	            'email_security' => $_ENV['EMAIL_SECURITY'],
+	            'email_port' => $_ENV['EMAIL_PORT'],
+	        ],
+
+            // App android ios settings
+	        's3_bucket' => [
+	            'access_key' => getenv('S3_ACCESS_KEY'),
+	            'secret_key' => getenv('S3_SECRET_KEY'),
+	            'bucket_name' => getenv('S3_BUCKET_NAME'),
+	            'bucket_tmp' => getenv('S3_BUCKET_TMP'),
+	            'bucket_version' => getenv('S3_BUCKET_VERSION'),
+	            'bucket_region' => getenv('S3_BUCKET_REGION'),
+	        ],
+
 		],
 	]);
 
