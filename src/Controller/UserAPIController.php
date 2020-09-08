@@ -15,12 +15,11 @@ final class UserAPIController extends BaseController
 		$mapper = new UsersMapper($this->database_adapter);
 		$results = $mapper->fetch();
 
-		//$this->logger->info("Home page action dispatched");
-
-		//$data = ['name' => 'Bob', 'age' => 40];
-		//$payload = json_encode($data);
-
-		$payload = json_encode($results, JSON_PRETTY_PRINT);
+        // Paginate the responses
+        $count = count($results);
+        $url_route = $this->router->urlFor('fetch_users');
+	    $paginated_response = \App\Helpers\PaginationHelper::WrapPrevNextPages($url_route,$request,$results,$count);
+		$payload = json_encode($paginated_response, JSON_PRETTY_PRINT);
 		$response->getBody()->write($payload);
     	return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
 	}

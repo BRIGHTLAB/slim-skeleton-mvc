@@ -47,5 +47,20 @@ return function (ContainerBuilder $containerBuilder) {
 			$codes = include  __DIR__.'/error_codes.php';
 			return $codes;
 		},
+		's3_helper' => function(ContainerInterface $container){
+			$settings = $container->get('settings');
+		    $s3_helper = new \App\Helpers\S3Uploader($settings);
+		    $s3_helper->setSkipDomains($settings['s3_skip_domains']);
+		    return $s3_helper;
+		},	
+
 	]);
+};
+
+
+$container['s3_helper'] = function ($c) {
+    $settings = $c->get('settings');
+    $s3_helper = new \App\Helpers\S3Uploader($settings);
+    $s3_helper->setSkipDomains($settings['s3_skip_domains']);
+    return $s3_helper;
 };

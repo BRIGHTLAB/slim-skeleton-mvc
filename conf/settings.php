@@ -82,6 +82,11 @@ return function (ContainerBuilder $containerBuilder) {
 	            'bucket_region' => getenv('S3_BUCKET_REGION'),
 	        ],
 
+	        // S3 skip domains
+	        's3_skip_domains' => [
+	           "https://"
+	        ],
+
 		],
 	]);
 
