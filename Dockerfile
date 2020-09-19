@@ -1,4 +1,5 @@
-FROM ulsmith/alpine-apache-php7
+FROM geniuscd/slimphp:latest
+
 MAINTAINER BrightLab
 
 WORKDIR /app

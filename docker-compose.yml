@@ -6,7 +6,7 @@ volumes:
 
 services:
     slim:
-        image: ulsmith/alpine-apache-php7
+        image: geniuscd/slimphp:latest
         working_dir: /app
         environment:
             docker: "true"
