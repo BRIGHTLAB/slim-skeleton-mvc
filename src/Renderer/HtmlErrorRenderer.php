@@ -25,7 +25,7 @@ class HtmlErrorRenderer implements ErrorRendererInterface
 		if (is_a($exception, '\Slim\Exception\HttpException')) {
 			$title = $exception->getTitle();
 		}
-
+		
 		return $this->view->fetch('error/default.twig', [
 			'title' => $title,
 			'debug' => $displayErrorDetails,

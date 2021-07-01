@@ -13,5 +13,7 @@ return function(App $app) {
 
 	$app->add($container->get('session'));
 
+	$app->add($container->get('query'));
+
 	$app->add(TwigMiddleware::createFromContainer($app));
 };

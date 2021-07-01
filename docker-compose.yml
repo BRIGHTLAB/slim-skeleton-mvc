@@ -11,17 +11,22 @@ services:
         environment:
             docker: "true"
         ports:
-            - 8080:80
+            - 8092:80
         volumes:
             - ./:/app
             - logs:/var/www/logs
         environment:
-            - APACHE_SERVER_NAME=catalogue.docker.localhost
+            - APACHE_SERVER_NAME=novoafrica.docker.localhost
             - PHP_SHORT_OPEN_TAG=On
             - PHP_ERROR_REPORTING=E_ALL
             - PHP_DISPLAY_ERRORS=On
             - PHP_HTML_ERRORS=On
-            - PHP_XDEBUG_ENABLED=true
+            - PHP_XDEBUG_ENABLED=false
+            - DB_HOST=192.168.0.205
+            - DB_USER=root
+            - DB_PASS=charles
+            - DB_NAME=novo_africa
+
         networks:
             - default
         cap_add:
